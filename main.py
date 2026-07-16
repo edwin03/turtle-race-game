@@ -23,9 +23,18 @@ if user_bet:
     is_race_on = True
 
 while is_race_on:
-    random_dist = random.randint(0, 10)
-    for tims in turtles:
-        tims.fd(random_dist)
+
+    for turtle in turtles:
+        if turtle.xcor() > 230:
+            is_race_on = False
+            winning_color = turtle.pencolor()
+            if winning_color == user_bet:
+                print(f"You have won! The {winning_color} turtle is the winner!")
+            else:
+                print(f"You have lost! The {winning_color} turtle is the winner!")
+
+        random_dist = random.randint(0, 10)
+        turtle.fd(random_dist)
 
 
 screen.exitonclick()
